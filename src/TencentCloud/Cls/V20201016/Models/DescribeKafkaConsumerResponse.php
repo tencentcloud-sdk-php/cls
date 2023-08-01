@@ -18,19 +18,33 @@ namespace TencentCloud\Cls\V20201016\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * OpenKafkaConsumer返回参数结构体
+ * DescribeKafkaConsumer返回参数结构体
  *
+ * @method boolean getStatus() 获取Kafka协议消费是否打开
+ * @method void setStatus(boolean $Status) 设置Kafka协议消费是否打开
  * @method string getTopicID() 获取KafkaConsumer 消费时使用的Topic参数
  * @method void setTopicID(string $TopicID) 设置KafkaConsumer 消费时使用的Topic参数
+ * @method integer getCompression() 获取压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+ * @method void setCompression(integer $Compression) 设置压缩方式[0:NONE；2:SNAPPY；3:LZ4]
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class OpenKafkaConsumerResponse extends AbstractModel
+class DescribeKafkaConsumerResponse extends AbstractModel
 {
+    /**
+     * @var boolean Kafka协议消费是否打开
+     */
+    public $Status;
+
     /**
      * @var string KafkaConsumer 消费时使用的Topic参数
      */
     public $TopicID;
+
+    /**
+     * @var integer 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+     */
+    public $Compression;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -38,7 +52,9 @@ class OpenKafkaConsumerResponse extends AbstractModel
     public $RequestId;
 
     /**
+     * @param boolean $Status Kafka协议消费是否打开
      * @param string $TopicID KafkaConsumer 消费时使用的Topic参数
+     * @param integer $Compression 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -54,8 +70,16 @@ class OpenKafkaConsumerResponse extends AbstractModel
         if ($param === null) {
             return;
         }
+        if (array_key_exists("Status",$param) and $param["Status"] !== null) {
+            $this->Status = $param["Status"];
+        }
+
         if (array_key_exists("TopicID",$param) and $param["TopicID"] !== null) {
             $this->TopicID = $param["TopicID"];
+        }
+
+        if (array_key_exists("Compression",$param) and $param["Compression"] !== null) {
+            $this->Compression = $param["Compression"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
