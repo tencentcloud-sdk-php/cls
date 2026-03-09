@@ -18,19 +18,26 @@ namespace TencentCloud\Cls\V20201016\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * GetMetricLabelValues返回参数结构体
+ * DescribeNetworkApplications返回参数结构体
  *
- * @method array getValues() 获取<p>时序metric label values</p>
- * @method void setValues(array $Values) 设置<p>时序metric label values</p>
+ * @method array getInfos() 获取<p>符合查询条件的大模型性能剖析任务列表</p>
+ * @method void setInfos(array $Infos) 设置<p>符合查询条件的大模型性能剖析任务列表</p>
+ * @method integer getTotal() 获取<p>符合查询条件的任务总数。</p>
+ * @method void setTotal(integer $Total) 设置<p>符合查询条件的任务总数。</p>
  * @method string getRequestId() 获取唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  */
-class GetMetricLabelValuesResponse extends AbstractModel
+class DescribeNetworkApplicationsResponse extends AbstractModel
 {
     /**
-     * @var array <p>时序metric label values</p>
+     * @var array <p>符合查询条件的大模型性能剖析任务列表</p>
      */
-    public $Values;
+    public $Infos;
+
+    /**
+     * @var integer <p>符合查询条件的任务总数。</p>
+     */
+    public $Total;
 
     /**
      * @var string 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -38,7 +45,8 @@ class GetMetricLabelValuesResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $Values <p>时序metric label values</p>
+     * @param array $Infos <p>符合查询条件的大模型性能剖析任务列表</p>
+     * @param integer $Total <p>符合查询条件的任务总数。</p>
      * @param string $RequestId 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -54,8 +62,17 @@ class GetMetricLabelValuesResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Values",$param) and $param["Values"] !== null) {
-            $this->Values = $param["Values"];
+        if (array_key_exists("Infos",$param) and $param["Infos"] !== null) {
+            $this->Infos = [];
+            foreach ($param["Infos"] as $key => $value){
+                $obj = new NetworkApplicationInfo();
+                $obj->deserialize($value);
+                array_push($this->Infos, $obj);
+            }
+        }
+
+        if (array_key_exists("Total",$param) and $param["Total"] !== null) {
+            $this->Total = $param["Total"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

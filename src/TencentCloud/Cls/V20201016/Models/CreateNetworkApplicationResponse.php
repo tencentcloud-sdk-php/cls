@@ -18,19 +18,19 @@ namespace TencentCloud\Cls\V20201016\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * GetMetricLabelValues返回参数结构体
+ * CreateNetworkApplication返回参数结构体
  *
- * @method array getValues() 获取<p>时序metric label values</p>
- * @method void setValues(array $Values) 设置<p>时序metric label values</p>
+ * @method string getNetworkAppId() 获取<p>网络应用id</p>
+ * @method void setNetworkAppId(string $NetworkAppId) 设置<p>网络应用id</p>
  * @method string getRequestId() 获取唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  */
-class GetMetricLabelValuesResponse extends AbstractModel
+class CreateNetworkApplicationResponse extends AbstractModel
 {
     /**
-     * @var array <p>时序metric label values</p>
+     * @var string <p>网络应用id</p>
      */
-    public $Values;
+    public $NetworkAppId;
 
     /**
      * @var string 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -38,7 +38,7 @@ class GetMetricLabelValuesResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $Values <p>时序metric label values</p>
+     * @param string $NetworkAppId <p>网络应用id</p>
      * @param string $RequestId 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -54,8 +54,8 @@ class GetMetricLabelValuesResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Values",$param) and $param["Values"] !== null) {
-            $this->Values = $param["Values"];
+        if (array_key_exists("NetworkAppId",$param) and $param["NetworkAppId"] !== null) {
+            $this->NetworkAppId = $param["NetworkAppId"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
