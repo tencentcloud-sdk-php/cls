@@ -18,19 +18,26 @@ namespace TencentCloud\Cls\V20201016\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * CreateTopic返回参数结构体
+ * DescribeRecordingRuleYamlTask返回参数结构体
  *
- * @method string getTopicId() 获取<p>主题ID</p>
- * @method void setTopicId(string $TopicId) 设置<p>主题ID</p>
+ * @method array getRecordingRuleYamlTaskInfos() 获取<p>RecordingRule任务列表信息</p>
+ * @method void setRecordingRuleYamlTaskInfos(array $RecordingRuleYamlTaskInfos) 设置<p>RecordingRule任务列表信息</p>
+ * @method integer getTotalCount() 获取<p>任务总条数</p>
+ * @method void setTotalCount(integer $TotalCount) 设置<p>任务总条数</p>
  * @method string getRequestId() 获取唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
  */
-class CreateTopicResponse extends AbstractModel
+class DescribeRecordingRuleYamlTaskResponse extends AbstractModel
 {
     /**
-     * @var string <p>主题ID</p>
+     * @var array <p>RecordingRule任务列表信息</p>
      */
-    public $TopicId;
+    public $RecordingRuleYamlTaskInfos;
+
+    /**
+     * @var integer <p>任务总条数</p>
+     */
+    public $TotalCount;
 
     /**
      * @var string 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -38,7 +45,8 @@ class CreateTopicResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param string $TopicId <p>主题ID</p>
+     * @param array $RecordingRuleYamlTaskInfos <p>RecordingRule任务列表信息</p>
+     * @param integer $TotalCount <p>任务总条数</p>
      * @param string $RequestId 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -54,8 +62,17 @@ class CreateTopicResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("TopicId",$param) and $param["TopicId"] !== null) {
-            $this->TopicId = $param["TopicId"];
+        if (array_key_exists("RecordingRuleYamlTaskInfos",$param) and $param["RecordingRuleYamlTaskInfos"] !== null) {
+            $this->RecordingRuleYamlTaskInfos = [];
+            foreach ($param["RecordingRuleYamlTaskInfos"] as $key => $value){
+                $obj = new RecordingRuleYamlTaskInfo();
+                $obj->deserialize($value);
+                array_push($this->RecordingRuleYamlTaskInfos, $obj);
+            }
+        }
+
+        if (array_key_exists("TotalCount",$param) and $param["TotalCount"] !== null) {
+            $this->TotalCount = $param["TotalCount"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
